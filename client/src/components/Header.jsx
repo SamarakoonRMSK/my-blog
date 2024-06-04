@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 export default function Header() {
   const location = useLocation();
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className="border-b-2 bg-slate-50">
       <Link
         to="/"
         className="whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
@@ -32,10 +32,14 @@ export default function Header() {
         <Button className="w-13 h-10 hidden sm:inline" color="gray" pill>
           <FaSun />
         </Button>
-        <Button gradientDuoTone="purpleToBlue">Sign up</Button>
-        <Button gradientDuoTone="purpleToBlue" outline>
-          Sign in
-        </Button>
+        <Link to="/signup">
+          <Button gradientDuoTone="purpleToBlue">Sign up</Button>
+        </Link>
+        <Link to="/signin">
+          <Button gradientDuoTone="purpleToBlue" outline>
+            Sign in
+          </Button>
+        </Link>
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
