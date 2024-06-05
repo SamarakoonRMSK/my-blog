@@ -1,12 +1,21 @@
-import { Button, Label, TextInput } from "flowbite-react";
+import { Button, Label, TextInput, Alert, Spinner } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import sign from "../assets/sign.png";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInFailure,
+  signInStart,
+  signInSuccess,
+} from "../store/reducers/userSlice";
 
 export default function Signin() {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
-  console.log(formData);
+  const dispatch = useDispatch();
+  const { loading, error: errorMessage } = useSelector(
+    (state) => state.userSlice
+  );
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -15,20 +24,25 @@ export default function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
-      console.log("wada na");
-      return;
+      return dispatch(signInFailure("All fields are required"));
     }
     try {
+      dispatch(signInStart());
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(res);
-      console.log(data);
+      if (data.success === false) {
+        return dispatch(signInFailure(data.message));
+      }
+      if (res.ok) {
+        dispatch(signInSuccess(data));
+        navigate("/");
+      }
     } catch (error) {
-      console.log(error);
+      dispatch(signInFailure(error.message));
     }
   };
 
@@ -75,8 +89,20 @@ export default function Signin() {
               </Label>
             </div>
             <Button gradientDuoTone="purpleToBlue" type="submit">
-              Sign In
+              {loading ? (
+                <>
+                  <Spinner aria-label="Spinner button example" size="sm" />
+                  <span className="pl-3">Loading...</span>
+                </>
+              ) : (
+                "Sign In"
+              )}
             </Button>
+            {errorMessage && (
+              <Alert color="failure" rounded>
+                <span className="font-medium">{errorMessage}</span>
+              </Alert>
+            )}
           </form>
         </div>
       </div>
