@@ -8,6 +8,7 @@ import {
   signInStart,
   signInSuccess,
 } from "../store/reducers/userSlice";
+import OAuth from "../components/OAuth";
 
 export default function Signin() {
   const [formData, setFormData] = useState({});
@@ -77,17 +78,7 @@ export default function Signin() {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex items-center gap-2">
-              <Label className="flex">
-                Don't Have an account?&nbsp;
-                <Link
-                  to="/signup"
-                  className="text-cyan-600 hover:underline dark:text-cyan-500"
-                >
-                  sign up
-                </Link>
-              </Label>
-            </div>
+
             <Button gradientDuoTone="purpleToBlue" type="submit">
               {loading ? (
                 <>
@@ -103,7 +94,19 @@ export default function Signin() {
                 <span className="font-medium">{errorMessage}</span>
               </Alert>
             )}
+            <OAuth />
           </form>
+          <div className="flex items-center gap-2 mt-2">
+            <Label className="flex">
+              Don't Have an account?&nbsp;
+              <Link
+                to="/signup"
+                className="text-cyan-600 hover:underline dark:text-cyan-500"
+              >
+                sign up
+              </Link>
+            </Label>
+          </div>
         </div>
       </div>
     </div>
