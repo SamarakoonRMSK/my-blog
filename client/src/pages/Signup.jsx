@@ -39,21 +39,22 @@ export default function Signup() {
               </div>
               <TextInput id="password1" type="password" required />
             </div>
-            <div className="flex items-center gap-2">
-              <Label className="flex">
-                Do you have an account?&nbsp;
-                <Link
-                  to="/signin"
-                  className="text-cyan-600 hover:underline dark:text-cyan-500"
-                >
-                  sign in
-                </Link>
-              </Label>
-            </div>
+
             <Button gradientDuoTone="purpleToBlue" type="submit">
               Sign In
             </Button>
           </form>
+          <div className="flex items-center gap-2 mt-2">
+            <Label className="flex">
+              Do you have an account?&nbsp;
+              <Link
+                to="/signin"
+                className="text-cyan-600 hover:underline dark:text-cyan-500"
+              >
+                sign in
+              </Link>
+            </Label>
+          </div>
         </div>
       </div>
     </div>
