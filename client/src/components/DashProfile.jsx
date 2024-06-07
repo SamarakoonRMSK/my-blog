@@ -86,7 +86,6 @@ export default function DashProfile() {
     setUpdateUserSuccess(null);
     if (Object.keys(formData).length === 0) {
       setUpdateUserError("There are no any changes");
-
       return;
     }
     if (imageFileUploading) {
@@ -96,7 +95,7 @@ export default function DashProfile() {
     }
     try {
       dispatch(updateStart());
-      const res = await fetch(`api/user/update/${currentUser._id}`, {
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +105,6 @@ export default function DashProfile() {
       const data = await res.json();
       if (!res.ok) {
         dispatch(updateFailure(data.message));
-        setUpdateUserError(data.message);
       } else {
         dispatch(updateSuccess(data));
         setUpdateUserSuccess("Profile upload sucessfully");
