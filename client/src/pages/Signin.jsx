@@ -7,7 +7,7 @@ import {
   signInFailure,
   signInStart,
   signInSuccess,
-} from "../store/reducers/userSlice";
+} from "../store/user/userSlice";
 import OAuth from "../components/OAuth";
 
 export default function Signin() {
