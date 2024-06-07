@@ -1,13 +1,24 @@
-import { Button, Navbar, TextInput, Dropdown, Avatar } from "flowbite-react";
+import {
+  Button,
+  Navbar,
+  TextInput,
+  Dropdown,
+  Avatar,
+  theme,
+} from "flowbite-react";
 import { Link } from "react-router-dom";
 import { HiOutlineSearch } from "react-icons/hi";
 import { FaSun } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../store/theme/themeSlice";
 
 export default function Header() {
   const location = useLocation();
   const { currentUser } = useSelector((state) => state.userSlice);
+  const { theme } = useSelector((state) => state.themeSlice);
+  const dispatch = useDispatch();
+
   return (
     <Navbar fluid rounded className="border-b-2 bg-slate-50">
       <Link
@@ -31,8 +42,13 @@ export default function Header() {
       </form>
 
       <div className="flex gap-2 md:order-2">
-        <Button className="w-13 h-10 hidden sm:inline" color="gray" pill>
-          <FaSun />
+        <Button
+          className="w-13 h-10 hidden sm:inline"
+          color="gray"
+          pill
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === "light" ? <FaSun /> : <FaSun />}
         </Button>
 
         {currentUser ? (

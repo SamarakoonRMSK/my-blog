@@ -7,7 +7,7 @@ import {
   signInFailure,
   signInStart,
   signInSuccess,
-} from "../store/reducers/userSlice";
+} from "../store/user/userSlice";
 import OAuth from "../components/OAuth";
 
 export default function Signin() {
@@ -50,7 +50,7 @@ export default function Signin() {
   return (
     <div className="min-h-screen pt-20 ">
       <div className="flex flex-col max-w-4xl md:flex-row md:items-center mx-auto p-3 px-5 gap-5 ">
-        <div className="flex-1 ">
+        <div className="flex-1">
           <img src={sign} alt="" />
         </div>
         <div className="flex-1">
