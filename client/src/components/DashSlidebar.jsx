@@ -7,8 +7,8 @@ import {
   HiShoppingBag,
   HiTable,
   HiUser,
-  HiViewBoards,
 } from "react-icons/hi";
+import { MdFavorite } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 
@@ -34,14 +34,15 @@ export function DashSlidebar() {
               Profile
             </Sidebar.Item>
           </Link>
-          <Sidebar.Item
-            icon={HiViewBoards}
-            label="Pro"
-            labelColor="dark"
-            as="div"
-          >
-            Kanban
-          </Sidebar.Item>
+          <Link to="/dashboard?tab=favorite">
+            <Sidebar.Item
+              icon={MdFavorite}
+              active={"favorite" === searchParams.get("tab")}
+              as="div"
+            >
+              Favorite Posts
+            </Sidebar.Item>
+          </Link>
           <Sidebar.Item icon={HiInbox} label="3" as="div">
             Inbox
           </Sidebar.Item>

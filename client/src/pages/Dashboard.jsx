@@ -2,6 +2,7 @@ import React from "react";
 import { DashSlidebar } from "../components/DashSlidebar";
 import { useSearchParams } from "react-router-dom";
 import DashProfile from "../components/DashProfile";
+import DashFavorite from "../components/DashFavorite";
 
 export default function Dashboard() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -12,6 +13,7 @@ export default function Dashboard() {
         <DashSlidebar />
       </div>
       {"profile" === searchParams.get("tab") && <DashProfile />}
+      {"favorite" === searchParams.get("tab") && <DashFavorite />}
     </div>
   );
 }
