@@ -40,11 +40,11 @@ export const Home = () => {
                 <div className="relative w-full ">
                   <Link to={`post/${posts[0].slug}`}>
                     <img
-                      className="w-full h-80 object-cover rounded-xl border-2  drop-shadow-lg dark:border-none"
+                      className="hover:opacity-50  w-full h-80 object-cover rounded-xl border-2  drop-shadow-lg dark:border-none"
                       src={posts[0].image}
                     />
                   </Link>
-                  <div className="absolute text-2xl top-5 left-5 text-black font-bold">
+                  <div className="absolute text-2xl top-5 left-5  text-white font-semibold">
                     {posts[0].title}
                   </div>
                 </div>
@@ -53,22 +53,22 @@ export const Home = () => {
                   <div className="flex-1">
                     <Link to={`post/${posts[1].slug}`}>
                       <img
-                        className="md:h-60 w-full object-cover rounded-xl border-2 drop-shadow-lg dark:border-none"
+                        className="hover:opacity-50 md:h-60 w-full object-cover rounded-xl border-2 drop-shadow-lg dark:border-none"
                         src={posts[1].image}
                       />
                     </Link>
-                    <div className="absolute text-2xl top-5 left-5 text-black font-bold">
+                    <div className="absolute text-2xl top-5 left-5 text-white font-semibold">
                       {posts[1].title}
                     </div>
                   </div>
                   <div className="relative flex-1 h-md">
                     <Link to={`post/${posts[2].slug}`}>
                       <img
-                        className="md:h-60 w-full object-cover rounded-xl border-2 drop-shadow-lg dark:border-none"
+                        className="hover:opacity-50 md:h-60 w-full object-cover rounded-xl border-2 drop-shadow-lg dark:border-none"
                         src={posts[2].image}
                       />
                     </Link>
-                    <div className="absolute text-2xl top-5 left-5 text-black font-bold">
+                    <div className="absolute text-2xl top-5 left-5 text-white font-semibold">
                       {posts[2].title}
                     </div>
                   </div>
@@ -82,23 +82,23 @@ export const Home = () => {
                   <div className="relative flex-1">
                     <Link to={`post/${posts[4].slug}`}>
                       <img
-                        className="md:h-60 w-full object-cover rounded-xl border-2 drop-shadow-lg dark:border-none"
+                        className="hover:opacity-50 md:h-60 w-full object-cover rounded-xl border-2 drop-shadow-lg dark:border-none"
                         src={posts[4].image}
                       />
                     </Link>
 
-                    <div className=" absolute text-2xl top-5 left-5 text-black font-bold">
+                    <div className=" absolute text-2xl top-5 left-5 text-white font-semibold">
                       {posts[4].title}
                     </div>
                   </div>
                   <div className="relative flex-1 h-md">
                     <Link to={`post/${posts[5].slug}`}>
                       <img
-                        className="md:h-60 w-full object-cover rounded-xl border-2 drop-shadow-lg dark:border-none"
+                        className="hover:opacity-50 md:h-60 w-full object-cover rounded-xl border-2 drop-shadow-lg dark:border-none"
                         src={posts[5].image}
                       />
                     </Link>
-                    <div className="absolute text-2xl top-5 left-5 text-black font-bold">
+                    <div className="absolute text-2xl top-5 left-5 text-white font-semibold">
                       {posts[5].title}
                     </div>
                   </div>
@@ -106,12 +106,12 @@ export const Home = () => {
                 <div className="relative w-full max-h-xs">
                   <Link to={`post/${posts[3].slug}`}>
                     <img
-                      className="w-full h-80 object-cover rounded-xl border-2 dark:border-none drop-shadow-lg"
+                      className="hover:opacity-50 w-full h-80 object-cover rounded-xl border-2 dark:border-none drop-shadow-lg"
                       src={posts[3].image}
                     />
                   </Link>
 
-                  <div className="absolute text-2xl top-5 left-5 text-black font-bold">
+                  <div className="absolute text-2xl top-5 left-5 text-white font-semibold">
                     {posts[3].title}
                   </div>
                 </div>
