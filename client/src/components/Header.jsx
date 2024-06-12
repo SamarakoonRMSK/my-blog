@@ -70,7 +70,15 @@ export default function Header() {
                   {currentUser.email}
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item>profile</Dropdown.Item>
+              <Link to="/dashboard?tab=profile">
+                <Dropdown.Item>profile</Dropdown.Item>
+              </Link>
+              {currentUser && currentUser.isAdmin && (
+                <Link to="/create-post">
+                  <Dropdown.Item>Create Post</Dropdown.Item>
+                </Link>
+              )}
+
               <Dropdown.Item>Log out</Dropdown.Item>
             </Dropdown>
           </>
