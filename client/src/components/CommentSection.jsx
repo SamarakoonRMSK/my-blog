@@ -60,12 +60,17 @@ export default function CommentSection({ postId }) {
   const handleLike = async (commentId) => {
     try {
       if (!currentUser) {
-        navigate("/sign-in");
+        navigate("/signin");
         return;
       }
       const res = await fetch(`/api/comment/likeComment/${commentId}`, {
         method: "PUT",
       });
+      if (res.status === 401 && res.statusText === "Unauthorized") {
+        navigate("/signin");
+        return;
+      }
+
       if (res.ok) {
         const data = await res.json();
         setComments(

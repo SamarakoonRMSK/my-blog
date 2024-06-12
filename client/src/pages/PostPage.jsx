@@ -107,7 +107,7 @@ export default function PostPage() {
       )}
 
       <div
-        className="p-3 text-gray-600 dark:text-gray-400 max-w-3xl mx-auto w-full"
+        className="p-3 text-gray-600 dark:text-gray-400 max-w-4xl mx-auto w-full"
         dangerouslySetInnerHTML={{ __html: post && post.content }}
       ></div>
       <CommentSection postId={post._id} />
