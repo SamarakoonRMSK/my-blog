@@ -10,6 +10,7 @@ import CreatePost from "./pages/CreatePost";
 import PostPage from "./pages/PostPage";
 import SearchPage from "./pages/SearchPage";
 import PrivateRoute from "./components/PrivateRoute";
+import UpdatePost from "./pages/UpdatePost";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
         <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/update-post/:postId" element={<UpdatePost />} />
         <Route path="/post/:postSlug" element={<PostPage />} />
       </Routes>
     </BrowserRouter>

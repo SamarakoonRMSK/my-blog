@@ -1,11 +1,8 @@
 import { Sidebar } from "flowbite-react";
-import { useEffect } from "react";
+
 import {
   HiArrowSmRight,
   HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiTable,
   HiUser,
   HiDocumentText,
   HiOutlineUserGroup,
@@ -15,10 +12,12 @@ import { MdFavorite } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import { signoutSuccess } from "../store/user/userSlice";
+import { useDispatch } from "react-redux";
 
 export function DashSlidebar() {
   const { currentUser } = useSelector((state) => state.userSlice);
   const [searchParams, setSearchParams] = useSearchParams();
+  const dispatch = useDispatch();
 
   const handleSignout = async () => {
     try {

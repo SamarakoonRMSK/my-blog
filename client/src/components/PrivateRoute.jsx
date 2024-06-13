@@ -31,11 +31,9 @@ export default function PrivateRoute() {
     );
   }
 
-  if (!user) {
-    return <Navigate to="sign-in" />;
+  if (!user || !currentUser) {
+    return <Navigate to="signin" />;
   }
-  console.log(user.id);
-  console.log(currentUser._id);
 
   return currentUser._id === user.id ? <Outlet /> : <Navigate to="/signin" />;
 }

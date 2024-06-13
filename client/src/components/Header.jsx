@@ -5,6 +5,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../store/theme/themeSlice";
 import { useEffect, useState } from "react";
+import { signoutSuccess } from "../store/user/userSlice";
 
 export default function Header() {
   const location = useLocation();
@@ -21,6 +22,22 @@ export default function Header() {
       setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
+
+  const handleSignout = async () => {
+    try {
+      const res = await fetch("/api/user/signout", {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signoutSuccess());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -89,7 +106,7 @@ export default function Header() {
                 </Link>
               )}
 
-              <Dropdown.Item>Log out</Dropdown.Item>
+              <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
             </Dropdown>
           </>
         ) : (
