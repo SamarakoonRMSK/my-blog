@@ -6,6 +6,8 @@ import {
   getPosts,
   getFavPosts,
   removefavorite,
+  deletepost,
+  updatepost,
 } from "../controllers/post.controller.js";
 
 const router = express.Router();
@@ -15,5 +17,7 @@ router.get("/getposts", getPosts);
 router.put("/likepost/:postId", verifyToken, favoriteHandle);
 router.get("/favorite/:userId", verifyToken, getFavPosts);
 router.put("/removefavorite/:postId", verifyToken, removefavorite);
+router.delete("/deletepost/:postId/:userId", verifyToken, deletepost);
+router.put("/updatepost/:postId/:userId", verifyToken, updatepost);
 
 export default router;
