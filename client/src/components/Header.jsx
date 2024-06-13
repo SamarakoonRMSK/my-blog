@@ -1,23 +1,34 @@
-import {
-  Button,
-  Navbar,
-  TextInput,
-  Dropdown,
-  Avatar,
-  theme,
-} from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Button, Navbar, TextInput, Dropdown, Avatar } from "flowbite-react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { FaSun } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../store/theme/themeSlice";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.userSlice);
   const { theme } = useSelector((state) => state.themeSlice);
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get("searchTerm");
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
+  }, [location.search]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set("searchTerm", searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
 
   return (
     <Navbar fluid rounded className="border-b-2 bg-slate-50">
@@ -32,12 +43,11 @@ export default function Header() {
           Blog
         </Navbar.Brand>
       </Link>
-      <form className="hidden sm:inline">
+      <form className="hidden sm:inline" onSubmit={handleSubmit}>
         <TextInput
-          id="email4"
-          type="email"
+          type="text"
           rightIcon={HiOutlineSearch}
-          placeholder="Search here..."
+          placeholder="Search..."
         />
       </form>
 
