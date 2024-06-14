@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
+import React from "react";
+import Home from "./pages/Home";
 import Header from "./components/Header";
 import Projects from "./pages/Projects";
 import Signin from "./pages/Signin";
@@ -8,6 +9,8 @@ import Dashboard from "./pages/Dashboard";
 import CreatePost from "./pages/CreatePost";
 import PostPage from "./pages/PostPage";
 import SearchPage from "./pages/SearchPage";
+import PrivateRoute from "./components/PrivateRoute";
+import UpdatePost from "./pages/UpdatePost";
 
 export default function App() {
   return (
@@ -19,8 +22,11 @@ export default function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
         <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/update-post/:postId" element={<UpdatePost />} />
         <Route path="/post/:postSlug" element={<PostPage />} />
       </Routes>
     </BrowserRouter>

@@ -5,3 +5,18 @@
 .jodit-editor {
   @apply dark:bg-gray-800 text-gray-950 dark:text-gray-100;
 }
+
+.image-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.zoom-image {
+  transition: transform 0.4s ease;
+  width: 100%;
+}
+
+.image-wrapper:hover .zoom-image {
+  transform: scale(1.1);
+}
