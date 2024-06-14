@@ -1,6 +1,4 @@
 import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import {
   getDownloadURL,
   getStorage,
@@ -185,16 +183,6 @@ export default function UpdatePost() {
             className="w-full h-72 object-cover"
           />
         )}
-        {/* <ReactQuill
-          theme="snow"
-          value={formData.content}
-          placeholder="Write something..."
-          className="h-72 mb-12"
-          required
-          onChange={(value) => {
-            setFormData({ ...formData, content: value });
-          }}
-        /> */}
         <JoditEditor
           ref={editor}
           value={formData.content}
