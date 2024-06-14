@@ -37,7 +37,12 @@ export default function Signup() {
               <div className="mb-2 block">
                 <Label value="Your password" />
               </div>
-              <TextInput id="password1" type="password" required />
+              <TextInput
+                id="password1"
+                type="password"
+                placeholder="Password"
+                required
+              />
             </div>
 
             <Button gradientDuoTone="purpleToBlue" type="submit">

@@ -12,10 +12,13 @@ import SearchPage from "./pages/SearchPage";
 import PrivateRoute from "./components/PrivateRoute";
 import UpdatePost from "./pages/UpdatePost";
 import Footer from "./components/Footer";
+import AdminPrivateRoute from "./components/AdminPrivateRoute";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -26,8 +29,10 @@ export default function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
-        <Route path="/create-post" element={<CreatePost />} />
-        <Route path="/update-post/:postId" element={<UpdatePost />} />
+        <Route element={<AdminPrivateRoute />}>
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/update-post/:postId" element={<UpdatePost />} />
+        </Route>
         <Route path="/post/:postSlug" element={<PostPage />} />
       </Routes>
       <Footer />

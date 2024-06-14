@@ -55,7 +55,7 @@ export default function Header() {
       >
         <Navbar.Brand as={"div"}>
           <span className="self-center p-1 whitespace-nowrap text-xl font-semibold text-white bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-lg">
-            SKR
+            SKS
           </span>
           Blog
         </Navbar.Brand>
