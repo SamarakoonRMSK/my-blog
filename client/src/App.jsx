@@ -11,6 +11,7 @@ import PostPage from "./pages/PostPage";
 import SearchPage from "./pages/SearchPage";
 import PrivateRoute from "./components/PrivateRoute";
 import UpdatePost from "./pages/UpdatePost";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/update-post/:postId" element={<UpdatePost />} />
         <Route path="/post/:postSlug" element={<PostPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
