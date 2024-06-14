@@ -74,6 +74,7 @@ export default function Signin() {
               <TextInput
                 id="password"
                 type="password"
+                placeholder="Password"
                 required
                 onChange={handleChange}
               />

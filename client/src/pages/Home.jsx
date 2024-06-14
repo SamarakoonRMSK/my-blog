@@ -1,4 +1,4 @@
-import { Spinner } from "flowbite-react";
+import { Button, Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -44,13 +44,27 @@ const Home = () => {
     );
 
   return (
-    <div className="flex min-h-screen max-w-7xl mx-auto  p-3 mt-20">
+    <div className=" min-h-screen max-w-7xl mx-auto  p-3 mt-10 mb-10">
+      <section className="relative bg-cover bg-center " data-aos="fade-right">
+        <div className="absolute inset-0   opacity-50"></div>
+        <div className="container mx-auto px-4 py-10 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold dark:text-white text-gray-800 mb-6">
+            Welcome to My Blog
+          </h1>
+          <p className="text-xl md:text-2xl  text-gray-400 mb-6">
+            Discover the latest articles, news, and trends from around the
+            world. Stay informed and inspired.
+          </p>
+          <Link to="/search">
+            <div className="flex justify-center">
+              <Button gradientDuoTone="purpleToBlue">Explore Articles</Button>
+            </div>
+          </Link>
+        </div>
+      </section>
       {posts.length > 0 && (
         <>
-          <div
-            data-aos="fade-right"
-            className="flex flex-col lg:flex-row gap-5"
-          >
+          <div data-aos="fade-left" className="flex flex-col lg:flex-row gap-5">
             <div className="flex-1">
               <div className="flex flex-col gap-5">
                 <div className=" w-full ">

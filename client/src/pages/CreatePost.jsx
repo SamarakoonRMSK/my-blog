@@ -5,8 +5,6 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { Alert, Button, FileInput, TextInput } from "flowbite-react";
-// import ReactQuill from "react-quill";
-// import "react-quill/dist/quill.snow.css";
 import JoditEditor from "jodit-react";
 import { app } from "../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
