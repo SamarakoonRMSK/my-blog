@@ -56,7 +56,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
     }
   };
   return (
-    <div>
+    <div className="my-3">
       <div className="flex-shrink-0 mr-3">
         <img
           className="w-10 h-10 rounded-full bg-gray-200"

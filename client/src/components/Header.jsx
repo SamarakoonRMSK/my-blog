@@ -65,6 +65,8 @@ export default function Header() {
           type="text"
           rightIcon={HiOutlineSearch}
           placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
 
