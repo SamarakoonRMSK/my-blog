@@ -3,12 +3,14 @@ import moment from "moment";
 import { Button, Textarea } from "flowbite-react";
 import { FaThumbsUp } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Comment({ comment, onLike, onEdit, onDelete }) {
   const [user, setUser] = useState({});
   const { currentUser } = useSelector((state) => state.userSlice);
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -41,6 +43,10 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
           content: editedContent,
         }),
       });
+      if (res.status === 401 && res.statusText === "Unauthorized") {
+        navigate("/signin");
+        return;
+      }
       if (res.ok) {
         setIsEditing(false);
         onEdit(comment, editedContent);
