@@ -108,6 +108,10 @@ export default function CommentSection({ postId }) {
       const res = await fetch(`/api/comment/deleteComment/${commentId}`, {
         method: "DELETE",
       });
+      if (res.status === 401 && res.statusText === "Unauthorized") {
+        navigate("/signin");
+        return;
+      }
       if (res.ok) {
         const data = await res.json();
         setComments(comments.filter((comment) => comment._id !== commentId));
@@ -136,7 +140,7 @@ export default function CommentSection({ postId }) {
       ) : (
         <div className="text-sm text-teal-500 my-5 flex gap-1">
           You must be signed in to comment.
-          <Link className="text-blue-500 hover:underline" to={"/sign-in"}>
+          <Link className="text-blue-500 hover:underline" to={"/signin"}>
             Sign In
           </Link>
         </div>
